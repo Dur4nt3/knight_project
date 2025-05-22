@@ -1,7 +1,294 @@
 @import url(./assets/stylesheets/fonts.css);
 
+/* Base Styles */
+
 :root {
     --font-stack:
         system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+    --background-color: #f1f5ff;
+    --primary-color: #004bc2;
+    --text-dark: #00050a;
+    --gold-color: #f5c518;
 }
+
+body {
+    font-family: Nunito;
+    color: var(--primary-color);
+
+    background-color: var(--background-color);
+    height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Base Styles */
+
+/* ------------------------------------------------------------------------------------------------- */
+
+/* Title Styles */
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-title {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 2rem;
+}
+
+.page-title > span {
+    font-weight: 700;
+    /* text-shadow: 0px 2px 3px #001c48; */
+    font-size: 5rem;
+    text-shadow:
+        0 0.005em 0 rgba(0, 0, 0, 0.2),
+        0 0.005em 0 currentColor,
+        0 0.01em 0 rgba(0, 0, 0, 0.25),
+        0 0.01em 0 currentColor,
+        0 0.015em 0 rgba(0, 0, 0, 0.3),
+        0 0.015em 0 currentColor,
+        0 0.02em 0 rgba(0, 0, 0, 0.35),
+        0 0.02em 0 currentColor,
+        0 0.025em 0 rgba(0, 0, 0, 0.4),
+        0 0.025em 0 currentColor,
+        0 0.03em 0.005em rgba(0, 0, 0, 0.1),
+        0 0 0.025em rgba(0, 0, 0, 0.1),
+        0 0.005em 0.015em rgba(0, 0, 0, 0.3),
+        0 0.015em 0.025em rgba(0, 0, 0, 0.2),
+        0 0.025em 0.05em rgba(0, 0, 0, 0.25),
+        0 0.05em 0.05em rgba(0, 0, 0, 0.2),
+        0 0.1em 0.1em rgba(0, 0, 0, 0.15);
+}
+
+.tracking-in-expand {
+    -webkit-animation: tracking-in-expand 1.05s
+        cubic-bezier(0.215, 0.61, 0.355, 1) both;
+    animation: tracking-in-expand 1.05s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@-webkit-keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.page-icon {
+    visibility: hidden;
+    display: inline-block;
+}
+
+.slide-bottom {
+    -webkit-animation: slide-bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        both;
+    animation: slide-bottom 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(-15rem);
+        transform: translateY(-15rem);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+@keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(-15rem);
+        transform: translateY(-15rem);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+.page-description {
+    color: var(--text-dark);
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.page-description > h1 {
+    font-weight: 400;
+    font-size: 1.35rem;
+}
+
+.text-focus-in {
+    -webkit-animation: text-focus-in 1.05s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+        both;
+    animation: text-focus-in 1.05s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@-webkit-keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes text-focus-in {
+    0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+.page-description > a {
+    text-decoration: none;
+    font-size: 1.35rem;
+    color: inherit;
+    font-weight: 400;
+    transition: 0.2s;
+    position: relative;
+}
+
+.github-link::before {
+    content: '';
+    font-weight: 700;
+    text-align: center;
+    color: var(--background-color);
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+    background-color: var(--primary-color);
+    transition: 0.4s;
+}
+
+.github-link:hover::before {
+    content: '</>';
+    height: 100%;
+}
+
+/* Title Styles */
+
+/* ------------------------------------------------------------------------------------------------- */
+
+/* Main Styles */
+
+.page-main {
+    flex-grow: 1;
+    margin-top: 7.5rem;
+}
+
+.fade-in-fwd {
+    -webkit-animation: fade-in-fwd 1.05s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+        both;
+    animation: fade-in-fwd 1.05s cubic-bezier(0.445, 0.05, 0.55, 0.95) both;
+}
+
+@-webkit-keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+@keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+
+/* ------------------------------------------------------------------------------------------------- */
+
+/* Intro Styles */
+
+.intro-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.demo-description {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1.35rem;
+}
+
+.start-demo {
+    padding: 1rem 2rem;
+    border-radius: 0.625rem;
+    border: 0;
+    background-color: rgb(0, 75, 194);
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: rgb(0, 48, 125) 0px 10px 0px 0px;
+    color: hsl(0, 0%, 100%);
+    cursor: pointer;
+}
+
+.start-demo:hover {
+    box-shadow: rgb(0, 48, 125) 0px 7px 0px 0px;
+}
+
+.start-demo:active {
+    background-color: rgb(0, 75, 194);
+    box-shadow: rgb(0, 75, 194) 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+}
+
+/* Intro Styles */
+
+/* ------------------------------------------------------------------------------------------------- */
+
+/* Main Styles */
