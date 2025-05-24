@@ -9,14 +9,21 @@ function createIntroMain() {
 
     const introCont = buildElement('div', 'intro-cont');
 
-    const introHeader = buildElement('h2', 'demo-description');
+    const introDescription = buildElement('div', 'demo-description');
+
+    const introHeader = buildElement('h2', 'description-header');
     introHeader.textContent =
-        'Given enough turns, a knight on a standard 8x8 chess board can move from any square to any other square.';
+        'With sufficient moves, a knight on a standard 8×8 chessboard can reach any square from any starting position.';
+    const introText = buildElement('p', 'description-text');
+    introText.textContent =
+        'This simulation visually illustrates the concept.';
+    
+    introDescription.append(introHeader, introText);
 
     const demoButton = buildElement('button', 'start-demo');
     demoButton.textContent = 'Start Demo';
 
-    introCont.append(introHeader, demoButton);
+    introCont.append(introDescription, demoButton);
     mainTag.append(introCont);
     mainTag.style.visibility = 'hidden';
 
@@ -42,6 +49,11 @@ export function pageLoadAnimations() {
 
     titleText.forEach((text) => text.classList.add('tracking-in-expand'));
 
+    const main = createIntroMain();
+    document.body.append(main);
+    main.classList.add('fade-in-fwd');
+    main.style.visibility = 'visible';
+
     setTimeout(() => {
         pageIcon.classList.add('slide-bottom');
         pageIcon.style.visibility = 'visible';
@@ -49,10 +61,10 @@ export function pageLoadAnimations() {
             titleDescription.classList.add('text-focus-in');
             titleDescription.style.visibility = 'visible';
             setTimeout(() => {
-                const main = createIntroMain();
-                document.body.append(main);
-                main.classList.add('fade-in-fwd');
-                main.style.visibility = 'visible';
+                // const main = createIntroMain();
+                // document.body.append(main);
+                // main.classList.add('fade-in-fwd');
+                // main.style.visibility = 'visible';
             }, 1000);
         }, 275);
     }, 950);
