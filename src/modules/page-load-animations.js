@@ -1,27 +1,7 @@
 import { buildElement } from './dom-manipulator';
+import { createDemoIntro } from './create-demo-intro';
 
 // Animations to run on page load
-
-// Used to circumvent <main></main> tag not hiding in sync with the title
-// Main is returned with "visibility: hidden", ensure to remove it when animating it
-function createIntroMain() {
-    const mainTag = buildElement('main', 'page-main');
-
-    const introCont = buildElement('div', 'intro-cont');
-
-    const introHeader = buildElement('h2', 'demo-description');
-    introHeader.textContent =
-        'Given enough turns, a knight on a standard 8x8 chess board can move from any square to any other square.';
-
-    const demoButton = buildElement('button', 'start-demo');
-    demoButton.textContent = 'Start Demo';
-
-    introCont.append(introHeader, demoButton);
-    mainTag.append(introCont);
-    mainTag.style.visibility = 'hidden';
-
-    return mainTag;
-}
 
 export function pageLoadAnimations() {
     const titleText = [...document.querySelectorAll('.title-text')];
@@ -49,7 +29,7 @@ export function pageLoadAnimations() {
             titleDescription.classList.add('text-focus-in');
             titleDescription.style.visibility = 'visible';
             setTimeout(() => {
-                const main = createIntroMain();
+                const main = createDemoIntro();
                 document.body.append(main);
                 main.classList.add('fade-in-fwd');
                 main.style.visibility = 'visible';

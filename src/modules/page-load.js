@@ -5,3 +5,4 @@ import { pageLoadAnimations } from './page-load-animations';
 export function pageLoad() {
     pageLoadAnimations();
 }
+
