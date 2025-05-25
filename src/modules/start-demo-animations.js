@@ -1,5 +1,6 @@
 import { createDemo } from './create-ui-chess-board';
 import { displayHelpModal } from './create-help-modal';
+import { enableButtons } from './ui-utilities';
 
 // Animations to run once the user has clicked the "Start Demo" button
 
@@ -10,6 +11,8 @@ export async function startDemo() {
 
     const demoCont = createDemo();
     demoCont.style.visibility = 'hidden';
+
+    const controlsCont = demoCont.querySelector('.controls-cont');
 
     demoInfo.classList.add('fade-out-bck');
     await new Promise((resolve) => {
@@ -32,7 +35,7 @@ export async function startDemo() {
     await new Promise((resolve) => {
         displayHelpModal(resolve);
     });
-    
+
     main.lastChild.lastChild.lastChild.classList.add('load-board');
 
     // Add rotation animation to chess board
@@ -41,4 +44,6 @@ export async function startDemo() {
             resolve('cannot start simulation before board loads');
         }, 1750);
     });
+
+    enableButtons(controlsCont);
 }

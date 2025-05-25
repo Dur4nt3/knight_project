@@ -1,19 +1,40 @@
 import { buildElement } from './dom-manipulator';
+import { simulationFlow } from './simulation-flow';
+import { disableButtons } from './ui-utilities';
 
 // Creates the chess board and the demo controls
 
 function createDemoControls() {
     const controlsCont = buildElement('div', 'controls-cont');
 
-    const knightButton = buildElement('button', 'demo-control', 'knight-button');
-    const castleButton = buildElement('button', 'demo-control', 'castle-button');
-    const simulateButton = buildElement('button', 'demo-control', 'simulate-button');
+    const knightButton = buildElement(
+        'button',
+        'demo-control',
+        'knight-button'
+    );
+    const castleButton = buildElement(
+        'button',
+        'demo-control',
+        'castle-button'
+    );
+    const simulateButton = buildElement(
+        'button',
+        'demo-control',
+        'simulate-button'
+    );
 
     knightButton.textContent = 'Place Knight';
     castleButton.textContent = 'Place Castle';
     simulateButton.textContent = 'Start';
 
     controlsCont.append(knightButton, castleButton, simulateButton);
+
+    // Ensures events won't execute before board loads
+    disableButtons(controlsCont);
+
+    [...controlsCont.children].forEach((button) => {
+        button.addEventListener('click', simulationFlow);
+    });
 
     return controlsCont;
 }
@@ -77,6 +98,7 @@ function createBoard() {
     }
 
     boardCont.append(board);
+    boardCont.addEventListener('click', simulationFlow);
     return boardCont;
 }
 
