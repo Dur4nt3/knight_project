@@ -14,10 +14,10 @@ In particular, this project aims to implement an algorithm that will find the sh
 <br/>
 
 - Generating a graph: 
-    1) first generate all possible (legal) moves from a selected starting square (the square selected isn't important as long as its valid) and store it within an array.
+    1) first generate all possible (legal) moves from a selected starting square (the square selected isn't important as long as its valid) and store them within an array.
     <br/>
 
-    2) Iterate through the array: if an edge exists between the starting move and the current move (within the iteration) continue, if there isn't an edge, mark that edge on the graph and re-execute the function with the current move as the starting move.
+    2) Iterate through the array: if an edge exists between the starting move and the current move skip to the next element within the array, if there isn't an edge, mark that edge on the graph and re-execute the function with the current move as the starting move.
     <br/>
     
     3) Repeat from the first step until we've finished iterating through the possible moves.
@@ -48,6 +48,10 @@ In particular, this project aims to implement an algorithm that will find the sh
     <br/>
 
     6) Return the path array.
+    <br/>
+
+    - *The end result is the shortest path from the starting square to the finish square.*
+    <br/>
 
 
 **Skills demonstrated: Graphs, data structures, algorithms**
